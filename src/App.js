@@ -49,7 +49,10 @@ const RectBox = styled.div`
   width: 100px;
   margin: 10px;
 
-  ${(props) => props.theme.rectBox}
+  ${(props) => props.theme.rectBox};
+  background-image: url(${(props) => props.theme.image});
+  background-position: center;
+  background-size: cover;
 `;
 
 function App() {
@@ -72,3 +75,5 @@ function App() {
 }
 
 export default App;
+
+// 참고: https://dosimpact.tistory.com/29

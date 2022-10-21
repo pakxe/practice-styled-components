@@ -5,7 +5,8 @@ import { css } from "styled-components";
 const colors = {
   main: "royalblue",
   white: "white",
-  gif: "https://i.pinimg.com/originals/74/af/8a/74af8a2220a9bf1b7fd15798c8ff777b.gif",
+  image:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQyh9TdQEqj0yVLlMJ4RY_2oKI6etWTg23olNPMItjoMQEBEpJD",
 };
 
 const rectBox = css`
