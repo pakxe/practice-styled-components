@@ -1,36 +1,55 @@
-import styled from "styled-components";
-import { ThemeProvider } from "styled-components";
+/* 
+styled-component: CSS를 편하게 코딩할 수 있게 해주는 라이브러리
+CSS in JS이므로 CSS코드를 js파일 안에 작성해야한다. 
 
-const Button = styled.button`
-  /* 버튼의 기본적인 스타일링이다. */
-  margin: 1em;
-  padding: 10px;
-  border-radius: 3px;
-  background: white;
+사용 준비: 
+1. npm i styled-components 
+2. 사용할 장소에서 import styled from "styled-components"; 
+*/
+import styled, { css } from "styled-components";
 
-  /* 테마에 접근해서 만드는 스타일링이다. */
-  color: ${(props) => props.theme.main};
-  border: 2px solid ${(props) => props.theme.main};
+const Wrapper = styled.div`
+  display: flex;
 `;
+const Box = styled(Wrapper)`
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  margin: 10px;
 
-// 테마 객체를 만든다. main과 back이라는 이름의 색을 갖고 있다.
-const theme = {
-  main: "mediumseagreen",
-};
+  // props안에 여러줄의 css를 작성할거면 css 키워드와 함께 작성한다. (안써줘도 되긴한데 가독성때문인가?)
+  ${(props) =>
+    props.blue
+      ? css`
+          background: royalblue;
+          border: 2px solid royalblue;
 
+          // nesting
+          & > span {
+            color: white;
+          }
+        `
+      : css`
+          background: white;
+          border: 2px solid royalblue;
+
+          //nesting
+          & > span {
+            color: royalblue;
+          }
+        `}
+`;
 function App() {
   return (
-    <>
-      <Button theme={{ main: "royalblue" }}>
-        theme props 직접 작성한 버튼
-      </Button>
-      <ThemeProvider theme={theme}>
-        <Button>원래의 테마 방식</Button>
-        <Button theme={{ main: "darkorange" }}>
-          원래의 테마 방식 하위에서의 theme props
-        </Button>
-      </ThemeProvider>
-    </>
+    <Wrapper>
+      <Box blue>
+        <span>이벤트</span>
+      </Box>
+      <Box>
+        <span>이벤트</span>
+      </Box>
+    </Wrapper>
   );
 }
 
