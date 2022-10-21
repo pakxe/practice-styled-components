@@ -34,6 +34,17 @@ const Box = styled(Wrapper)`
           border: 2px solid royalblue;
         `}
 `;
+
+// attrs 생성자 사용
+const Input = styled.input.attrs({
+  type: "checkbox",
+})`
+  width: 30px;
+  height: 30px;
+  background: royalblue;
+  margin: 10px;
+`;
+
 function App() {
   return (
     <Wrapper>
@@ -43,6 +54,11 @@ function App() {
       <Box>
         <span>이벤트</span>
       </Box>
+      <Input checked />
+      <Input />
+
+      {/* as props를 이용해 스타일드컴포넌트의 HTML태그 바꾸기 */}
+      <Input as='div' />
     </Wrapper>
   );
 }
