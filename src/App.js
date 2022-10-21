@@ -18,26 +18,20 @@ const Box = styled(Wrapper)`
   width: 100px;
   margin: 10px;
 
+  // nesting
+  & > span {
+    color: ${(props) => (props.blue ? "white" : "royalblue")};
+  }
   // props안에 여러줄의 css를 작성할거면 css 키워드와 함께 작성한다. (안써줘도 되긴한데 가독성때문인가?)
   ${(props) =>
     props.blue
       ? css`
           background: royalblue;
           border: 2px solid royalblue;
-
-          // nesting
-          & > span {
-            color: white;
-          }
         `
       : css`
           background: white;
           border: 2px solid royalblue;
-
-          //nesting
-          & > span {
-            color: royalblue;
-          }
         `}
 `;
 function App() {
