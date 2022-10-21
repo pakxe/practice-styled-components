@@ -17,21 +17,19 @@ const Box = styled(Wrapper)`
   height: 100px;
   width: 100px;
   margin: 10px;
-
-  // nesting
   & > span {
-    color: ${(props) => (props.blue ? "white" : "royalblue")};
+    color: ${(props) => (props.blue ? props.theme.white : props.theme.main)};
   }
   // props안에 여러줄의 css를 작성할거면 css 키워드와 함께 작성한다. (안써줘도 되긴한데 가독성때문인가?)
   ${(props) =>
     props.blue
       ? css`
-          background: royalblue;
-          border: 2px solid royalblue;
+          background: ${(props) => props.theme.main};
+          border: 2px solid ${(props) => props.theme.main};
         `
       : css`
-          background: white;
-          border: 2px solid royalblue;
+          background: ${(props) => props.theme.white};
+          border: 2px solid ${(props) => props.theme.main};
         `}
 `;
 
@@ -39,10 +37,19 @@ const Box = styled(Wrapper)`
 const Input = styled.input.attrs({
   type: "checkbox",
 })`
+  margin: 10px;
+
   width: 30px;
   height: 30px;
-  background: royalblue;
+  background: ${(props) => props.theme.main};
+`;
+
+const RectBox = styled.div`
+  height: 50px;
+  width: 100px;
   margin: 10px;
+
+  ${(props) => props.theme.rectBox}
 `;
 
 function App() {
@@ -59,6 +66,7 @@ function App() {
 
       {/* as props를 이용해 스타일드컴포넌트의 HTML태그 바꾸기 */}
       <Input as='div' />
+      <RectBox />
     </Wrapper>
   );
 }
